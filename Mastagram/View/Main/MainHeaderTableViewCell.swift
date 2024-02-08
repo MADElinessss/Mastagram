@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class MainHeaderTableViewCell: UITableViewCell {
+class MainHeaderTableViewCell: BaseTableViewCell {
     
     var callBackMehtod: (() -> Void)?
 
@@ -20,29 +20,25 @@ class MainHeaderTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        configureHierarchy()
-        configureLayout()
-        configureView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         contentView.addSubview(logoImage)
         contentView.addSubview(likeButton)
         contentView.addSubview(profileButton)
         contentView.addSubview(shareButton)
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         
         logoImage.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide)
-            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(44)
-            make.height.equalTo(44)
+            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(8)
+            make.height.equalTo(36)
         }
         
         shareButton.snp.makeConstraints { make in
@@ -63,9 +59,9 @@ class MainHeaderTableViewCell: UITableViewCell {
         
     }
 
-    func configureView() {
+    override func configureView() {
         logoImage.image = UIImage(named: "logo_light")
-        logoImage.contentMode = .scaleAspectFill
+        logoImage.contentMode = .scaleAspectFit
         
         likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         likeButton.tintColor = .black

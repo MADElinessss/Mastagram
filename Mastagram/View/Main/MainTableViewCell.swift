@@ -8,27 +8,24 @@
 import SnapKit
 import UIKit
 
-class MainTableViewCell: UITableViewCell {
+class MainTableViewCell: BaseTableViewCell {
     
     let feedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionLayout())
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        configureHierarchy()
-        configureLayout()
-        configureView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         contentView.addSubview(feedCollectionView)
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         feedCollectionView.snp.makeConstraints { make in
             make.edges.equalTo(contentView.safeAreaLayoutGuide)
             make.centerX.equalTo(contentView)
@@ -37,7 +34,7 @@ class MainTableViewCell: UITableViewCell {
         }
     }
 
-    func configureView() {
+    override func configureView() {
         feedCollectionView.backgroundColor = .gray
         
         feedCollectionView.delegate = self

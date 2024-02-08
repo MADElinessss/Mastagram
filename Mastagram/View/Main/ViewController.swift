@@ -36,7 +36,7 @@ class ViewController: BaseViewController {
         feedTableView.dataSource = self
         feedTableView.register(MainTableViewCell.self, forCellReuseIdentifier: "MainTableViewCell")
         feedTableView.register(MainHeaderTableViewCell.self, forCellReuseIdentifier: "MainHeaderTableViewCell")
-        feedTableView.backgroundColor = .black
+        feedTableView.backgroundColor = .white
         feedTableView.reloadData()
         
     }
@@ -79,8 +79,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            
-            return 44
+            return 36
         } else {
             
             return 300

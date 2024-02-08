@@ -8,9 +8,19 @@
 import SnapKit
 import UIKit
 
+enum Labels: String {
+    case name
+    case userName
+    case introduction
+}
+
+// MARK: 이름, 사용자 이름, 소개 -> 편집 뷰
 class LabelEditViewController: BaseViewController {
+    
+    var nameSpace: ((String) -> Void)?
 
     let backButton = UIButton()
+    let completeButton = UIButton()
     let titleLabel = UILabel()
     
     let textFieldHeader = UILabel()
@@ -26,6 +36,7 @@ class LabelEditViewController: BaseViewController {
     override func configureHeirarchy() {
         view.addSubview(titleLabel)
         view.addSubview(backButton)
+        view.addSubview(completeButton)
         view.addSubview(textField)
         view.addSubview(textFieldHeader)
         view.addSubview(descriptionLabel)
@@ -40,6 +51,11 @@ class LabelEditViewController: BaseViewController {
         backButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalTo(view.safeAreaLayoutGuide).inset(16)
+        }
+        
+        completeButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
         
         textField.snp.makeConstraints { make in
@@ -68,6 +84,12 @@ class LabelEditViewController: BaseViewController {
         titleLabel.text = "이름"
         titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
         
+        completeButton.setTitle("완료", for: .normal)
+        completeButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        completeButton.setTitleColor(.blue, for: .normal)
+        // TODO: 저장
+        completeButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
+        
         textField.text = "정연"
         textField.textColor = .black
         textField.clearButtonMode = .always
@@ -83,10 +105,20 @@ class LabelEditViewController: BaseViewController {
         descriptionLabel.textColor = .gray
     }
     
+    
+    
     @objc func backButtonTapped() {
         dismiss(animated: true)
     }
-
+    
+    @objc func completeButtonTapped() {
+        let text = textField.text ?? ""
+        UserDefaultsManager.shared.name = text
+        
+        nameSpace?(text)
+        
+        dismiss(animated: true)
+    }
 }
 
 #Preview {

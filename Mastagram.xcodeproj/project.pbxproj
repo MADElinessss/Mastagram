@@ -25,6 +25,9 @@
 		C1BC98822B7499910083E181 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC98812B7499910083E181 /* ProfileEditViewController.swift */; };
 		C1BC98842B749A1D0083E181 /* ProfileEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC98832B749A1D0083E181 /* ProfileEditTableViewCell.swift */; };
 		C1BC98902B74A3BB0083E181 /* LabelEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC988F2B74A3BB0083E181 /* LabelEditViewController.swift */; };
+		C1BC98922B74AC900083E181 /* ProfileImagePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC98912B74AC900083E181 /* ProfileImagePickerTableViewCell.swift */; };
+		C1BC98942B74ACA20083E181 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC98932B74ACA20083E181 /* BaseTableViewCell.swift */; };
+		C1BC989B2B74B65D0083E181 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC989A2B74B65D0083E181 /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		C1BC98812B7499910083E181 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		C1BC98832B749A1D0083E181 /* ProfileEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditTableViewCell.swift; sourceTree = "<group>"; };
 		C1BC988F2B74A3BB0083E181 /* LabelEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEditViewController.swift; sourceTree = "<group>"; };
+		C1BC98912B74AC900083E181 /* ProfileImagePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePickerTableViewCell.swift; sourceTree = "<group>"; };
+		C1BC98932B74ACA20083E181 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		C1BC989A2B74B65D0083E181 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,7 @@
 		C1BC980C2B739D0A0083E181 /* Mastagram */ = {
 			isa = PBXGroup;
 			children = (
+				C1BC98992B74B6530083E181 /* Manager */,
 				C1BC98882B749F230083E181 /* Resource */,
 				C1BC98282B739DA50083E181 /* View */,
 				C1BC98272B739D990083E181 /* Model */,
@@ -115,8 +122,7 @@
 		C1BC982D2B73C4C40083E181 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				C1BC982E2B73C4D70083E181 /* BaseViewController.swift */,
-				C1BC98362B73C9A50083E181 /* BaseCollectionViewCell.swift */,
+				C1BC98952B74ACCE0083E181 /* Base */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -146,6 +152,7 @@
 				C1BC98812B7499910083E181 /* ProfileEditViewController.swift */,
 				C1BC98832B749A1D0083E181 /* ProfileEditTableViewCell.swift */,
 				C1BC988F2B74A3BB0083E181 /* LabelEditViewController.swift */,
+				C1BC98912B74AC900083E181 /* ProfileImagePickerTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -155,6 +162,24 @@
 			children = (
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		C1BC98952B74ACCE0083E181 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C1BC982E2B73C4D70083E181 /* BaseViewController.swift */,
+				C1BC98362B73C9A50083E181 /* BaseCollectionViewCell.swift */,
+				C1BC98932B74ACA20083E181 /* BaseTableViewCell.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C1BC98992B74B6530083E181 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C1BC989A2B74B65D0083E181 /* UserDefaultsManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,13 +264,16 @@
 			files = (
 				C1BC98842B749A1D0083E181 /* ProfileEditTableViewCell.swift in Sources */,
 				C1BC98902B74A3BB0083E181 /* LabelEditViewController.swift in Sources */,
+				C1BC98922B74AC900083E181 /* ProfileImagePickerTableViewCell.swift in Sources */,
 				C1BC987D2B74976D0083E181 /* MainHeaderTableViewCell.swift in Sources */,
+				C1BC98942B74ACA20083E181 /* BaseTableViewCell.swift in Sources */,
 				C1BC98122B739D0A0083E181 /* ViewController.swift in Sources */,
 				C1BC98372B73C9A50083E181 /* BaseCollectionViewCell.swift in Sources */,
 				C1BC982C2B73C49B0083E181 /* MainCollectionViewCell.swift in Sources */,
 				C1BC980E2B739D0A0083E181 /* AppDelegate.swift in Sources */,
 				C1BC98262B739D910083E181 /* APIKey.swift in Sources */,
 				C1BC98822B7499910083E181 /* ProfileEditViewController.swift in Sources */,
+				C1BC989B2B74B65D0083E181 /* UserDefaultsManager.swift in Sources */,
 				C1BC98102B739D0A0083E181 /* SceneDelegate.swift in Sources */,
 				C1BC982F2B73C4D70083E181 /* BaseViewController.swift in Sources */,
 				C1BC982A2B73C48B0083E181 /* MainTableViewCell.swift in Sources */,

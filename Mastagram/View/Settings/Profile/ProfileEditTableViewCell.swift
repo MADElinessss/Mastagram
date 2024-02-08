@@ -8,35 +8,39 @@
 import UIKit
 
 
-class ProfileEditTableViewCell: UITableViewCell {
+class ProfileEditTableViewCell: BaseTableViewCell {
     
     let titleLabel = UILabel()
+    let contentLabel = UILabel()
+    
+    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        configureHierarchy()
-        configureLayout()
-        configureView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         contentView.addSubview(titleLabel)
+        contentView.addSubview(contentLabel)
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
             make.verticalEdges.equalTo(contentView)
         }
-        
+        contentLabel.snp.makeConstraints { make in
+            make.leading.equalTo(contentView.safeAreaInsets).offset(120)
+            make.verticalEdges.equalTo(contentView)
+        }
     }
 
-    func configureView() {
+    override func configureView() {
         titleLabel.text = "이름"
         titleLabel.textColor = .black
         titleLabel.font = .systemFont(ofSize: 14, weight: .regular)
