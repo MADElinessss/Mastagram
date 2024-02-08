@@ -8,7 +8,25 @@
 import SnapKit
 import UIKit
 
-let titleLabelList = ["이름", "사용자 이름", "성별 대명사", "소개", "링크", "성별"]
+enum Labels: String, CaseIterable {
+    case name
+    case userName
+    case genderPronoun
+    case introduction
+    case link
+    case gender
+    
+    var title: String {
+        switch self {
+        case .name: return "이름"
+        case .userName: return "사용자 이름"
+        case .genderPronoun: return "성별 대명사"
+        case .introduction: return "소개"
+        case .link: return "링크"
+        case .gender: return "성별"
+        }
+    }
+}
 
 class ProfileEditViewController: BaseViewController {
     
@@ -94,7 +112,7 @@ extension ProfileEditViewController: UITableViewDelegate, UITableViewDataSource 
         if section == 0 {
             return 1
         } else {
-            return 6
+            return Labels.allCases.count
         }
     }
     
@@ -108,13 +126,16 @@ extension ProfileEditViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileImagePickerTableViewCell", for: indexPath) as! ProfileImagePickerTableViewCell
             
             return cell
         } else {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileEditTableViewCell", for: indexPath) as! ProfileEditTableViewCell
-            cell.titleLabel.text = titleLabelList[indexPath.row]
+            cell.titleLabel.text = Labels.allCases[indexPath.row].title
             cell.contentLabel.text = content
 
             return cell
@@ -124,12 +145,14 @@ extension ProfileEditViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section != 0 {
-            let vc = LabelEditViewController()
             
+            let vc = LabelEditViewController()
             vc.nameSpace = { text in
                 self.content = text
             }
             
+            vc.state = Labels.allCases[indexPath.row].title
+  
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
         }

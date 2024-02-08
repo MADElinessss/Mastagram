@@ -8,16 +8,11 @@
 import SnapKit
 import UIKit
 
-enum Labels: String {
-    case name
-    case userName
-    case introduction
-}
-
 // MARK: 이름, 사용자 이름, 소개 -> 편집 뷰
 class LabelEditViewController: BaseViewController {
     
-    var nameSpace: ((String) -> Void)?
+    var nameSpace: ((String) -> ())?
+    var state: String = "name"
 
     let backButton = UIButton()
     let completeButton = UIButton()
@@ -27,10 +22,8 @@ class LabelEditViewController: BaseViewController {
     let textField = UITextField()
     let descriptionLabel = UILabel()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func configureHeirarchy() {
@@ -81,7 +74,7 @@ class LabelEditViewController: BaseViewController {
         backButton.setTitleColor(.black, for: .normal)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
 
-        titleLabel.text = "이름"
+        titleLabel.text = state
         titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
         
         completeButton.setTitle("완료", for: .normal)
@@ -95,7 +88,7 @@ class LabelEditViewController: BaseViewController {
         textField.clearButtonMode = .always
         textField.borderStyle = .roundedRect
         
-        textFieldHeader.text = "이름"
+        textFieldHeader.text = state
         textFieldHeader.font = .systemFont(ofSize: 14, weight: .medium)
         textFieldHeader.textColor = .gray
         
@@ -105,9 +98,9 @@ class LabelEditViewController: BaseViewController {
         descriptionLabel.textColor = .gray
     }
     
-    
-    
     @objc func backButtonTapped() {
+        
+        
         dismiss(animated: true)
     }
     
@@ -119,8 +112,4 @@ class LabelEditViewController: BaseViewController {
         
         dismiss(animated: true)
     }
-}
-
-#Preview {
-    LabelEditViewController()
 }
